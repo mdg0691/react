@@ -1,0 +1,15 @@
+.Navbar{
+    display: flex;
+    justify-content: center;
+}
+
+.List{
+    display: inline-flex;
+    list-style-type: none;
+    align-items: center
+}
+
+li{
+    padding: 2rem;
+    cursor: pointer;
+}
