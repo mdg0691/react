@@ -1,3 +1,5 @@
-.ItemListCard{
+
+.ItemListCard {
     display: flex;
+    flex-direction: column;
 }

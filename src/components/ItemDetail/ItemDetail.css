@@ -1,19 +1,22 @@
 .CardItem {
-    width: 150px;
+    width: 500px;
     padding: 30px;
     margin: 30px;
     font-size: 10px;
-    display:block;
+    display: block;
     background-color: papayawhip;
     border: 1px solid #e1e1e1;
     border-radius: 10px;
+    display: flex;
 }
-
-
-
 .ItemImg {
     width: 100px;
     height: 100px;
     object-fit: cover;
     object-position: center;
+}
+
+.ItemFooter {
+    display: flex;
+    justify-content: center;
 }

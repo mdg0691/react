@@ -25,4 +25,4 @@ const Counter =({stock, onAdd}) =>{
     )
 }
 
-export default Counter
+export default Counterzz

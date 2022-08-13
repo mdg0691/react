@@ -1,12 +1,13 @@
+import './ItemList.css'
 import Item from "../Item/Item"
+
 
 const ItemList =({products}) =>{
     
     return(
-        <ul>
-            {/* {products.map(prod => <li key={prod.id}>{prod.name}</li>)} */}
-            {products.map(prod => <Item  key={prod.id} product={prod}/>)}
-        </ul>
+        <div className="ItemListCard">
+            {products.map(prod => <Item  key={prod.id} {...prod}/>)}
+        </div>
     )
 }
 

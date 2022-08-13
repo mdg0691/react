@@ -19,27 +19,14 @@ const ItemListConteiner=({ greeting }) => {
         }).catch(error => {
             console.log(error)
         })
-        
-        // if(!categoryId){
-        //     getProduct().then(products => {
-        //         setProducts(products)
-        //     })
-        // } else {
-        //     getProductByCategory(categoryId).then(products => {
-        //         setProducts(products)
-        //     })
-        // }
     },[categoryId])
 
     return(
-        <>
+        
+        <div className='ItemListContainer'>
             <h1>{greeting}</h1>
-
-            {/* <ul>
-                {products.map(prod => <li key={prod.id}>{prod.name}</li>)}
-            </ul> */}
             <ItemList products={products}/>
-        </>
+        </div>
     )
 }
  
