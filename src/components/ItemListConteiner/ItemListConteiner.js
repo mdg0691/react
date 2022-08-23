@@ -1,33 +1,49 @@
 import './ItemListConteiner.css'
-import { getProduct, getProductByCategory } from '../../asyncMock'
 import { useState,useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase'
 
 const ItemListConteiner=({ greeting }) => {
     
     const [products, setProducts] = useState([])
-    console.log(products)
-
-    const { categoryId} = useParams()
+    const [loading, setLoading] = useState(true)
+    const { categoryId } = useParams()
     
     useEffect(() => {
-        const asyncFunction = categoryId ? getProductByCategory : getProduct
+        setLoading(true)
 
-        asyncFunction(categoryId).then(products => {
-            setProducts(products)
-        }).catch(error => {
+        const collectionRef = !categoryId
+        ? collection(db, 'products')
+        : query(collection(db, 'products'), where('category', '==', categoryId))
+
+        getDocs(collectionRef).then(response => {
+            console.log(response)
+            const productsAdapted = response.docs.map(doc => {
+                const data = doc.data()
+                console.log(data)
+                return { id: doc.id, ...data}
+            })
+            setProducts(productsAdapted)
+        }).catch(error =>{
             console.log(error)
+        }).finally(() => {
+            setLoading(false)
         })
-    },[categoryId])
-
-    return(
         
-        <div className='ItemListContainer'>
-            <h1>{greeting}</h1>
-            <ItemList products={products}/>
-        </div>
-    )
+    },[categoryId])
+    if(loading){
+        return <h1>Cargando Productos..</h1>
+    } 
+
+        return(
+            <div className='ItemListContainer'>
+                <h1>{`${greeting} ${categoryId || ''}`}</h1>
+                <ItemList products={products}/>
+            </div>
+        )
+    
 }
  
 export default ItemListConteiner

@@ -9,10 +9,13 @@ const CardWidget =() =>{
     const quantity = getQuantity()
 
     return(
-        <Link to='/cart'>
-            <img className="CardLogo" src='images\carrito.png' alt='CardWidget'/>
-            { quantity }
-        </Link>
+    
+            <Link to='/cart'>
+                <img className="CardLogo" src='images\carrito.png' alt='CardWidget'/>
+                <p>{ quantity }</p>
+            </Link>
+    
+        
     )
 }
 
