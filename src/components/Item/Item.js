@@ -5,7 +5,6 @@ const Item =({id, name, img, price}) => {
         e.stopPropagation()
         console.log('hice click en item')
     }
-
     return(
         <article className="CardItem" onClick={handleClick}>
             <header>

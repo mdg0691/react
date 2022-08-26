@@ -11,28 +11,20 @@ const CartItem = ({ id, name, img, quantity, price }) => {
     }
 
     return (
-        <table className='CartBoxItem'>
-            <tr>
-                <th >Nombre</th>
-                <th >Imagen</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Subtotal</th>
-
-            </tr>
-            <tr>
-                <td>{name}</td>
-                <td>
+        <div className='CartBoxItem'>
+            <div>
+                <div>{name}</div>
+                <div>
                     <picture>
                         <img src={img} alt={name}/>
                     </picture>
-                </td>
-                <td> {quantity}</td>
-                <td> {price}</td>
-                <td>${price * quantity}</td>
-                <td><button onClick={() => handleRemove(id)}>X</button></td>
-            </tr>
-        </table>
+                </div>
+                <div> {quantity}</div>
+                <div> {price}</div>
+                <div>${price * quantity}</div>
+                <div><button onClick={() => handleRemove(id)}>X</button></div>
+            </div>
+        </div>
         
     )
 }
