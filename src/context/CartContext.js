@@ -26,6 +26,14 @@ export const CartContextProvider = ({ children }) => {
         }
     }
 
+    const [buyer, setBuyer] = useState({
+        firstName:'',
+        lastName:'',
+        address:'',
+        phone:'',
+        email:''
+    })
+
     const clearCart = () => {
         setCart([])
     }
@@ -69,7 +77,7 @@ export const CartContextProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cart, addItem, getTotal, getQuantity, isInCart, removeItem, clearCart, getProductQuantity }}>
+        <CartContext.Provider value={{ cart, addItem, getTotal, getQuantity, isInCart, removeItem, clearCart, getProductQuantity,buyer,setBuyer }}>
             {children}
         </CartContext.Provider>
     )

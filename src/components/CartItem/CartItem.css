@@ -7,3 +7,9 @@
     border-radius: 10px;
 }
 
+.CartImg{
+    width: 100px;
+        height: 100px;
+        object-fit: cover;
+        object-position: center;
+}

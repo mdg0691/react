@@ -1,46 +1,28 @@
 import './ItemListConteiner.css'
-import { useState,useEffect } from 'react'
+// import { useState,useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
+
 import { useParams } from 'react-router-dom'
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../../services/firebase'
+import { getProducts } from '../../services/firebase/firestore'
+import { useAsync } from '../../hooks/useAsync'
 
-const ItemListConteiner=({ greeting }) => {
-    
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+const ItemListConteiner = ({ greeting }) => {
+
     const { categoryId } = useParams()
+    const getProductsFromFirestore = () => getProducts(categoryId)
+    const { data, error, isLoading} = useAsync(getProductsFromFirestore, [categoryId])
     
-    useEffect(() => {
-        setLoading(true)
 
-        const collectionRef = !categoryId
-        ? collection(db, 'products')
-        : query(collection(db, 'products'), where('category', '==', categoryId))
-
-        getDocs(collectionRef).then(response => {
-            console.log(response)
-            const productsAdapted = response.docs.map(doc => {
-                const data = doc.data()
-                console.log(data)
-                return { id: doc.id, ...data}
-            })
-            setProducts(productsAdapted)
-        }).catch(error =>{
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })
-        
-    },[categoryId])
-    if(loading){
+    if(isLoading){
         return <h1>Cargando Productos..</h1>
     } 
-
-        return(
+    if(error){
+        return <h1>404 FOUND</h1>
+    }
+      return(
             <div className='ItemListContainer'>
                 <h1>{`${greeting} ${categoryId || ''}`}</h1>
-                <ItemList products={products}/>
+                <ItemList products={data}/>
             </div>
         )
     

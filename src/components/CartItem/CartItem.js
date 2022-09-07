@@ -5,7 +5,7 @@ import CartContext from '../../context/CartContext'
 
 const CartItem = ({ id, name, img, quantity, price }) => {
     const { removeItem } = useContext(CartContext)
-
+    console.log(img)
     const handleRemove = (id) => {
         removeItem(id)
     }
@@ -16,7 +16,7 @@ const CartItem = ({ id, name, img, quantity, price }) => {
                 <div>{name}</div>
                 <div>
                     <picture>
-                        <img src={img} alt={name}/>
+                        <img scr={img} alt={name} className="CartImg"/>
                     </picture>
                 </div>
                 <div> {quantity}</div>

@@ -30,14 +30,12 @@ const ItemDetailContainer = () => {
         return <h1>Cargando Producto..</h1>
     } 
         return(
-            <>
-                <div>
+            <div className="ItemDetailBox">
                     <h1>Detalle</h1>
-                </div>
-                <div className="ItemDetailConteiner">   
+                 
                     <ItemDetail {...product}/>
-                </div>
-            </>  
+                
+            </div>  
     )
 } 
 

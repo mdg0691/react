@@ -1,34 +1,32 @@
-import { useState } from 'react'
+import {useContext } from 'react';
+import CartContext from '../../context/CartContext'
+// import './FormCheckout.css'
 
-const Form = () => {
+
+const FormCheckout = ({createOrder}) =>{
+
+    const {buyer, setBuyer} = useContext(CartContext)
+    const {firstName, lastName, address, phone, email} = buyer
+
     
-    const [firstName, setFirstName] = useState ('')
-    const [lastName, setlastName] = useState ('')
-    const [phone, setPhone] = useState ('')
-    const [address, setAddress] = useState ('')
-    const [email, setEmail] = useState ('')
-
-    const handletChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-    const handletChangeLastName = (e) => {
-        setlastName(e.target.value)
+    const handleChange = (e) =>{
+        setBuyer({
+            ...buyer,
+            [e.target.name]: e.target.value            
+        })
     }
 
-    const handletChangePhone = (e) => {
-        setPhone(e.target.value)
-    }
-    const handletChangeAddress = (e) => {
-        setAddress(e.target.value)
-    }
-    const handletChangeEmail = (e) => {
-        setEmail(e.target.value)
-    }
     const handleSubmit = (e) => {
         e.preventDefault()
+        e.stopPropagation()
     }
+
+    
     return (
-        <div>
+        <>
+            <h1>Checkout</h1>
+            {/* <Form/> */}
+            <div>
             <h1>Form</h1>
             <form onSubmit={handleSubmit}>
                 <input 
@@ -36,41 +34,43 @@ const Form = () => {
                     name = 'firstname' 
                     placeholder = 'Nombre'
                     value = {firstName}
-                    onChange = {handletChangeFirstName} 
+                    onChange = {handleChange} 
                 /><br/><br/>
                 <input 
                     type = 'text' 
                     name = 'lastname' 
                     placeholder = 'Apellido'
                     value = {lastName}
-                    onChange = {handletChangeLastName} 
+                    onChange = {handleChange} 
                 /><br/><br/>
                 <input 
                     type = 'text' 
                     name = 'phone' 
                     placeholder = 'Telefono'
                     value = {phone}
-                    onChange = {handletChangePhone} 
+                    onChange = {handleChange} 
                 /><br/><br/>
                 <input 
                     type = 'text' 
                     name = 'address' 
                     placeholder = 'Direccion'
                     value = {address}
-                    onChange = {handletChangeAddress} 
+                    onChange = {handleChange} 
                 /><br/><br/>
                 <input 
                     type = 'text' 
                     name = 'email' 
                     placeholder = 'Correo Electronico'
                     value = {email}
-                    onChange = {handletChangeEmail} 
+                    onChange = {handleChange} 
                 /><br/><br/>
-
-                <button>Enviar</button>
+                <button onClick={createOrder}>Generar Orden</button>
+                {/* <button>Enviar</button> */}
             </form>
         </div>
+            
+        </>
     )
 }
 
-export default Form
+export default FormCheckout
