@@ -34,7 +34,7 @@ path='/detail/:productId' show products by Id
 
 ### GIFT
 
-![](public/React_TNCalzadosGift.gif)
+![](public\ProyectoFinalReactGift.gif)
 
 01\app01\public\React_TNCalzadosGift.gif
 
