@@ -3,26 +3,21 @@ import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
 
 
-const CartItem = ({ id, name, img, quantity, price }) => {
+const CartItem = ({ id, name, quantity, price }) => {
+
     const { removeItem } = useContext(CartContext)
-    console.log(img)
     const handleRemove = (id) => {
         removeItem(id)
     }
 
     return (
         <div className='CartBoxItem'>
-            <div>
-                <div>{name}</div>
-                <div>
-                    <picture>
-                        <img scr={img} alt={name} className="CartImg"/>
-                    </picture>
-                </div>
-                <div> {quantity}</div>
-                <div> {price}</div>
-                <div>${price * quantity}</div>
-                <div><button onClick={() => handleRemove(id)}>X</button></div>
+            <div className='CartFlex'>
+                <div className='CartItem'>{name}</div>
+                <div className='CartItem'> Cantidad: {quantity}</div>
+                <div className='CartItem'> Precio unitario: {price}</div>
+                <div className='CartItem'>Subtotal: ${price * quantity}</div>
+                <div className='CartItem'><button onClick={() => handleRemove(id)}>X</button></div>
             </div>
         </div>
         

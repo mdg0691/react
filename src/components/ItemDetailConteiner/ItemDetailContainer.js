@@ -1,39 +1,25 @@
 import './ItemDetailContainer.css'
-import { useState, useEffect } from "react"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
-import {getDoc, doc} from 'firebase/firestore'
-import { db } from '../../services/firebase'
+import { useAsync } from '../../hooks/useAsync'
+import { getProd } from '../../services/firebase/firestore'
 
 const ItemDetailContainer = () => {
-
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
     const { productId } = useParams()
+    const getProdFromFirestore = () => getProd(productId) 
+    const { data, error, isLoading} = useAsync(getProdFromFirestore, [productId])
 
-    useEffect(() => {
-        setLoading(true)
-        getDoc(doc(db, 'products', productId)).then(response => {
-            const data = response.data()
-            const productsAdapted = {id:response.id, ...data}
-            setProduct(productsAdapted)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        }) 
-    }, [productId])
-
-    console.log(product)
-
-    if(loading){
+    if(isLoading){
         return <h1>Cargando Producto..</h1>
+    }
+    if(error){
+        return <h1>404 FOUND</h1>
     } 
         return(
             <div className="ItemDetailBox">
                     <h1>Detalle</h1>
                  
-                    <ItemDetail {...product}/>
+                    <ItemDetail {...data}/>
                 
             </div>  
     )

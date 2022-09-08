@@ -1,19 +1,27 @@
 import './Navbar.css'
 import CardWidget from '../CardWidget/CardWidget'
-import Logo from '../Logo/Logo'
-import { Link } from 'react-router-dom'  
+import { Link } from 'react-router-dom' 
+import { useAsync } from '../../hooks/useAsync';
+import { getCategories } from '../../services/firebase/firestore';
+
 const Navbar = () => {
+    const {data,error} = useAsync(() => getCategories())
+
+    if(error){
+        console.log(error)
+    }
+    
     return(
         <nav className="Navbar">
             <ul className="List">
-                <li><Logo/></li>
+                <li><img className="MainLogo" src='images\logoTN.jpeg' alt='logo'/></li>
                 <li><Link to='/'>HOME</Link></li>
-                <li><Link to='/category/man'>Hombres</Link></li>
-                <li><Link to='/category/women'>Mujeres</Link></li>
-                <li><Link to='/category/childs'>Niños</Link></li>
-                <li><Link to='/category/accesories'>Accesorios</Link></li>
-                <li><CardWidget/></li>
+                {data?.map((category) =>(
+                            <li><Link to={category.path} key={category.name} className='link'>{category.name}</Link></li>
+                        ))}
+                <CardWidget/>
             </ul>
+            
         </nav>
 
     )

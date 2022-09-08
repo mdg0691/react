@@ -1,5 +1,5 @@
 
-import { getDocs, collection, query, where } from 'firebase/firestore'
+import { getDocs, collection, query, where, getDoc, doc } from 'firebase/firestore'
 import { db } from './index'
 
 export const getProducts = (categoryId) => {
@@ -19,3 +19,30 @@ export const getProducts = (categoryId) => {
             return error
         })
 } 
+
+export const getProd = (prodId) => {
+    return getDoc(doc(db, 'products',prodId)).then(res => {
+        const data = res.data()
+        const productDb = {id:res.id, ...data}
+        
+        return productDb
+
+    }).catch(error =>{
+        return error
+    })
+}
+
+export const getCategories =()=>{
+    const allCategories = collection(db, 'categories')
+    return getDocs(allCategories).then((response) =>{
+        const categories = response.docs.map((snap)=>{
+            return{
+                id: snap.id,
+                ...snap.data()
+            }
+        })
+        return categories
+    }).catch(error =>{
+        return error
+    })
+}

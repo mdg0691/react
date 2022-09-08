@@ -4,7 +4,6 @@ import FormCheckout from './FormCheckout'
 import { db } from "../../services/firebase"
 import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from "firebase/firestore"
 import { useNavigate} from 'react-router-dom'
-// import Form from "../Form/Form"
 
 const Checkout = () => {
     const [isLoading, setIsLoading] = useState(false)

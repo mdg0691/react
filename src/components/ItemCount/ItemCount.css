@@ -1,36 +1,15 @@
 .Counter {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    margin: auto;
 }
 
 .Btn {
     display: flex;
+    flex-direction: row;   
     justify-content: center;
-    width: 140 px;
-    height: 40 px;
-    
+    padding: 20px; 
 }
 
-.Btn button{
-    background: #a01672;
-    border: none;
-    border-radius: 70px;
-    font-size: 3 rem;
-    color: white;
-    outline: none;
-    box-shadow: 0px 5px 5px rgb(145, 145, 145);
-    
-
-}
-.Count{
-    font-size: 3rem;
-}
-.MinusBtn, .PlusBtn{
-    font-size: 1rem;
-    font-weight: 700;
-    
+.Button{
+    padding: 0px 10px 0px 10px;
 }

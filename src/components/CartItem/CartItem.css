@@ -1,15 +1,22 @@
 .CartBoxItem {
-    padding: 2  0px;
-    margin: 30px;
+    padding: 0 20px 0 20px;
+    margin: 10px 70px 10px 70px;
     font-size: 10px;
     background-color: papayawhip;
     border: 1px solid #e1e1e1;
     border-radius: 10px;
 }
-
-.CartImg{
-    width: 100px;
-        height: 100px;
-        object-fit: cover;
-        object-position: center;
+.CartFlex{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+.CartItem{
+    padding: 10px;
+    display: flex;
+    width: 125px;
+    justify-content: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
 }

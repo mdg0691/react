@@ -24,21 +24,20 @@ const FormCheckout = ({createOrder}) =>{
     
     return (
         <>
-            <h1>Checkout</h1>
-            {/* <Form/> */}
+            <h1>Formulario de Pago</h1>
             <div>
-            <h1>Form</h1>
             <form onSubmit={handleSubmit}>
                 <input 
+                    required
                     type = 'text' 
-                    name = 'firstname' 
+                    name = 'firstName' 
                     placeholder = 'Nombre'
                     value = {firstName}
                     onChange = {handleChange} 
                 /><br/><br/>
                 <input 
                     type = 'text' 
-                    name = 'lastname' 
+                    name = 'lastName' 
                     placeholder = 'Apellido'
                     value = {lastName}
                     onChange = {handleChange} 
@@ -64,8 +63,7 @@ const FormCheckout = ({createOrder}) =>{
                     value = {email}
                     onChange = {handleChange} 
                 /><br/><br/>
-                <button onClick={createOrder}>Generar Orden</button>
-                {/* <button>Enviar</button> */}
+                {(firstName && lastName && address && phone && email ) && <button onClick={()=>createOrder()}>Generar Orden</button>}
             </form>
         </div>
             
