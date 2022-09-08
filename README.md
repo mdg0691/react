@@ -12,7 +12,7 @@ $ cd react
 $ npm install
 $ npm start
 ```
-## Routes
+### Routes
 > The following routes were create in order to organized the aplication considering routing tools
 
 To generate the routes , you must install React-Router
@@ -34,11 +34,11 @@ path='/detail/:productId' show products by Id
 
 ### GIFT
 
-![](public\ProyectoFinalReactGift.gif)
+![](public/ProyectoFinalReactGift.gif)
 
-01\app01\public\React_TNCalzadosGift.gif
+01\app01\public\ProyectoFinalReactGift.gif
 
-## Built Using
+### Built Using
 
 - [Create-React-App](https://create-react-app.dev/)
 
@@ -47,15 +47,15 @@ Open http://localhost:3000 to view it in your browser.
 
 Open TN Calzados to view production enviroment.
 
-## Branches of GIT
+### Branches of GIT
 
 This project contains the following branches:
 
--Main
--02_Desafio_MenuEcommerce&CreatuLanding
--03_Desafio_CatalogoMAPS&Promises-&-ContadorBoton
--04_Desafio_DetalleProducto-&-Preentrega-ProyectoFinal
--05_Desafio_Eventos-&-Counter
--06_Desafio_cardView-&-itemCollection
--07_ItemCollection02
--08_ProyectoFinal_v1
+- Main
+- 02_Desafio_MenuEcommerce&CreatuLanding
+- 03_Desafio_CatalogoMAPS&Promises-&-ContadorBoton
+- 04_Desafio_DetalleProducto-&-Preentrega-ProyectoFinal
+- 05_Desafio_Eventos-&-Counter
+- 06_Desafio_cardView-&-itemCollection
+- 07_ItemCollection02
+- 08_ProyectoFinal_v1
